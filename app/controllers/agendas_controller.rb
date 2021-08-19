@@ -23,6 +23,7 @@ class AgendasController < ApplicationController
 
   def destroy
     @agenda.destroy
+    AgendaMailer.agenda_mail(@assign.user.email).deliver
     redirect_to dashboard_url, notice: "削除しました！"
   end
 
