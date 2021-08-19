@@ -36,6 +36,9 @@
                 <%= agenda.title %>
                 <i class="right fa fa-angle-left"></i>
               </p>
+              <% if agenda.user.id == current_user.id || agenda.team.owner.id == current_user.id %>
+                <%= link_to I18n.t('views.button.delete'), agenda_path(agenda.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+              <% end %>
             </a>
             <ul class="nav nav-treeview" style="display: block;">
               <% agenda.articles.each do |article| %>
